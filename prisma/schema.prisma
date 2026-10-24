@@ -1,0 +1,31 @@
+// Prisma schema for Namekayro appointments.
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum AppointmentStatus {
+  Booked
+  Done
+  NoShow    @map("No-show")
+  Cancelled
+}
+
+model Appointment {
+  id               String            @id @default(uuid())
+  clientName       String
+  phone            String?
+  appointmentStart DateTime
+  status           AppointmentStatus @default(Booked)
+  confirmedAt      DateTime?
+  reminderSentAt   DateTime?
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+
+  @@index([phone])
+  @@index([appointmentStart])
+}
