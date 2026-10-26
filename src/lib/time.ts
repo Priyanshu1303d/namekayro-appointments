@@ -2,8 +2,8 @@ import { startOfDay, endOfDay, addMinutes } from "date-fns";
 import { toZonedTime, fromZonedTime } from "date-fns-tz";
 import { TIMEZONE, OPENING_HOUR, CLOSING_HOUR, SLOT_MINUTES } from "./config";
 
-// UTC start (00:00) and end (23:59:59) of the IST day that contains utcDate.
-export function getISTDayBounds(utcDate: Date): { start: Date; end: Date } {
+// UTC start (00:00) and end (23:59:59) of the IST day that contains utcDate (defaults to now).
+export function getISTDayBounds(utcDate: Date = new Date()): { start: Date; end: Date } {
   const inIST = toZonedTime(utcDate, TIMEZONE);
   return {
     start: fromZonedTime(startOfDay(inIST), TIMEZONE),
@@ -45,6 +45,11 @@ export function isOnGrid(utcDate: Date): boolean {
 
   const totalMin = h * 60 + m;
   return totalMin >= OPENING_HOUR * 60 && totalMin < CLOSING_HOUR * 60;
+}
+
+// Parses "YYYY-MM-DD" as midnight IST and returns it as a UTC Date.
+export function parseISTDate(dateStr: string): Date {
+  return fromZonedTime(`${dateStr} 00:00:00`, TIMEZONE);
 }
 
 // True if utcDate is already in the past.
