@@ -13,7 +13,6 @@ namekayro-appointments/
 │   ├── schema.prisma          # PostgreSQL Appointment data model
 │   └── seed.ts                # Deterministic seed data (IST timestamps)
 ├── public/
-│   ├── capsule.png            # High-res 3D wellness capsule
 │   └── pill.png               # Pill graphic asset
 ├── src/
 │   ├── app/
