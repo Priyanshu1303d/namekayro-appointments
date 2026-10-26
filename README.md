@@ -1,6 +1,8 @@
-# Namekayro Appointments — Holistic Wellness Platform
+# Namekayro Appointments - Holistic Wellness Platform
 
 A production-ready, full-stack appointment booking system designed for a wellness practice. Features a smooth, login-free client experience paired with a nutritionist management portal.
+
+Live Link: https://namekayro-appointments.vercel.app/
 
 ---
 
